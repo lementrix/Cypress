@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularz rejestracji</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="registration-form" action="#" method="POST">
+        <h2>Formularz rejestracji</h2>
+
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Wpisz e-mail" />
+            <span id="email-error" class="error-message"></span>
+        </div>
+
+        <div>
+            <label for="password">Hasło:</label>
+            <input type="password" id="password" name="password" required minlength="6" placeholder="Wpisz hasło" />
+            <span id="password-error" class="error-message"></span>
+        </div>
+
+        <div>
+            <label for="confirm-password">Potwierdź hasło:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required placeholder="Potwierdź hasło" />
+            <span id="confirm-password-error" class="error-message"></span>
+        </div>
+
+        <button type="submit">Zarejestruj</button>
+    </form>
+
+    <script>
+        const form = document.getElementById('registration-form');
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirm-password');
+        const passwordError = document.getElementById('confirm-password-error');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            if (password.value !== confirmPassword.value) {
+                passwordError.textContent = 'Hasła muszą być takie same!';
+                confirmPassword.style.borderColor = 'red';
+            } else {
+                passwordError.textContent = ''; 
+                confirmPassword.style.borderColor = 'green'; 
+                window.location.href = '/home.html'; 
+            }
+        });
+    </script>
+
+</body>
+</html>
+

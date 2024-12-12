@@ -1,0 +1,6 @@
+const password = document.getElementById('password').value;
+const confirmPassword = document.getElementById('confirm-password').value;
+
+if (password !== confirmPassword) {
+    document.getElementById('password-error').textContent = 'Passwords do not match';
+}
